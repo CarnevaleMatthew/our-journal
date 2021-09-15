@@ -1,0 +1,23 @@
+<% layout('layouts/boilerplate') -%> 
+
+
+<form action="/entries/<%= foundEntry._id %>?_method=PUT" method="POST" class="needs-validation" novalidate>
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title: </label>
+                <input type="text" class="form-control" id="title" name="title" value="<%= foundEntry.title %>" required autocomplete="off">
+              </div>
+              <label for="status">Status:</label>
+              <select class="form-select mb-3" id="status" name="status" required>
+                <option value="public" selected>Public</option>
+                <option value="private">Private</option>
+              </select>
+              <div class="mb-3">
+                <label for="body" class="form-label">Your Entry:</label>
+                <textarea class="form-control" id="body" name="body" rows="3" required><%= foundEntry.body %> </textarea>
+              </div>
+              <button class="btn btn-outline-primary mb-3" type="submit">Edit Entry</button>
+        </div>
+    </div>
+</form>

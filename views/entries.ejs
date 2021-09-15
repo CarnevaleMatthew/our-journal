@@ -1,0 +1,27 @@
+<% layout('layouts/boilerplate') -%>
+
+
+<h1 class="text-center mb-5">All Public Entries</h1>
+
+<div class="d-flex justify-content-center flex-wrap">
+    <% for(let entry of entries) {%>
+        <div class="card border-success m-2 mb-4" style="max-width: 18rem;">
+            <div class="card-header bg-transparent border-success">
+                By: <%= entry.user.displayName %> 
+                <img src="<%= entry.user.image %> " class="rounded-circle float-end" style="width: 20%; height: auto;" alt="...">
+            </div>
+            <div class="card-body text-success">
+              <h5 class="card-title"><%= entry.title %> </h5>
+                <p class="card-text"><%= stripTags(entry.body).substring(0, 10) %>...</p>
+              </div>
+            <div class="card-footer bg-transparent border-success text-center">
+                <a href="/entries/<%= entry._id %> "><button class="btn btn-outline-success btn-sm" type="submit">
+                    See More
+                </button></a>
+            </div>
+          </div>
+    <% } %> 
+     
+</div>
+  
+       

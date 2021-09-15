@@ -1,0 +1,25 @@
+<% layout('layouts/boilerplate') -%>
+
+
+ <div class="d-flex justify-content-center">
+    <div class="card border-dark mb-3" style="max-width: 30rem;">
+        <div class="card-header">
+          <div class="d-flex justify-content-between">
+            <span><%= foundEntry.user.displayName %></span>
+            <span><%= foundEntry.CreatedOn.toLocaleDateString() %></span> 
+          </div>
+          
+        
+        </div>
+        <div class="card-body text-dark">
+          <h5 class="card-title"><%= foundEntry.title %> </h5>
+          <p class="card-text"><%= stripTags(foundEntry.body) %> </p>
+        </div>
+      </div>
+</div>
+
+
+ <div class="d-flex justify-content-center my-5">
+    <h3 class="m-3">See More From <a href="/entries/user/<%= foundEntry.user._id %> "><%= foundEntry.user.displayName %></a></h3>
+ </div>
+        

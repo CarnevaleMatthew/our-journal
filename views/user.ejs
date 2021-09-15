@@ -1,0 +1,22 @@
+<% layout('layouts/boilerplate') -%>
+
+<h1 class="m-3 mb-5 text-center">
+    Public Entries From <%= foundEntry.user.displayName %> 
+</h1>
+
+<div class="d-flex flex-wrap justify-content-center">
+    <% for(let entry of entries) {%>
+    
+      <div class="card m-1 text-center" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= entry.title %> </h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= entry.status %> </h6>
+          <p class="card-text"><%= stripTags(entry.body).substring(0, 15) %>...</p>
+          <p><%= entry.CreatedOn.toLocaleString() %> </p>
+        </div>
+      </div>
+  
+  <% } %> 
+  
+  </div>
+
