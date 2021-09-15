@@ -130,13 +130,15 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error", { err });
 });
 
+const port = process.env.PORT || 3000
+
 // Start Connection
 const start = async () => {
   try {
     await connectToDB(process.env.MONGO_URI);
     console.log("Connected to MongoDB");
-    app.listen(3000, () => {
-      console.log(`Listening to port 3000`);
+    app.listen(PORT, () => {
+      console.log(`Listening to port ${port}`);
     });
   } catch (error) {
     console.log(error);
