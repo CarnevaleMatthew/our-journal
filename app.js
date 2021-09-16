@@ -1,8 +1,6 @@
-require("./db/connect");
 require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express");
-const connectToDB = require("./db/connect");
 const ejs = require("ejs");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./helpers/ExpressError");
