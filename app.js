@@ -133,22 +133,22 @@ app.use((err, req, res, next) => {
 const port = process.env.PORT || 3000;
 
 
-app.listen(port, () => {
-  console.log(`Listening to port ${port}.`);
-});
+// app.listen(port, () => {
+//   console.log(`Listening to port ${port}.`);
+// });
 
 
 // Start Connection
-// const start = async () => {
-//   try {
-//     await connectToDB(process.env.MONGO_URI);
-//     console.log("Connected to MongoDB");
-//     app.listen(3000, () => {
-//       console.log(`Listening to port ${port}`);
-//     });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+const start = async () => {
+  try {
+    await connectToDB(process.env.MONGO_URI);
+    console.log("Connected to MongoDB");
+    app.listen(3000, () => {
+      console.log(`Listening to port ${port}`);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-// start();
+start();
