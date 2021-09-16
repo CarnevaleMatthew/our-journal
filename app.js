@@ -14,6 +14,18 @@ const methodOverride = require("method-override");
 const flash = require("connect-flash");
 const helmet = require("helmet");
 
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+  })
+  .then(console.log("Connected to MongoDB via Mongoose"))
+  .catch((err) => {
+    console.log("Error", err);
+  });
+
 // Passport Config
 require("./config/passport")(passport);
 
@@ -83,10 +95,13 @@ app.use(
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      //   secure: true
+        secure: true
     },
     store: MongoStore.create({
       mongoUrl: process.env.MONGO_URI, //(URI FROM.env file)
+      crypto: {
+        secret
+      }
     }),
   })
 );
@@ -133,22 +148,8 @@ app.use((err, req, res, next) => {
 const port = process.env.PORT || 3000;
 
 
-// app.listen(port, () => {
-//   console.log(`Listening to port ${port}.`);
-// });
+app.listen(port, () => {
+  console.log(`Listening to port ${port}.`);
+});
 
 
-// Start Connection
-const start = async () => {
-  try {
-    await connectToDB(process.env.MONGO_URI);
-    console.log("Connected to MongoDB");
-    app.listen(3000, () => {
-      console.log(`Listening to port ${port}`);
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-start();
