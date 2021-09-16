@@ -95,9 +95,6 @@ app.use(
     },
     store: MongoStore.create({
       mongoUrl: process.env.MONGO_URI, //(URI FROM.env file)
-      crypto: {
-        secret
-      }
     }),
   })
 );
