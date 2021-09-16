@@ -15,14 +15,12 @@ const helmet = require("helmet");
 mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
-    useCreateIndex: true,
     useUnifiedTopology: true,
-    useFindAndModify: false
   })
   .then(console.log("Connected to MongoDB via Mongoose"))
   .catch((err) => {
     console.log("Error", err);
-  });
+});
 
 // Passport Config
 require("./config/passport")(passport);
